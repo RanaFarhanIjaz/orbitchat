@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b0c0f">
+    <meta name="description" content="A thoughtful AI chatbot powered by Groq.">
+    <title>Orbit — AI chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Chat sidebar">
+        <a class="brand" href="/" aria-label="Orbit home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11.25" stroke="currentColor" stroke-width="1.5"/><ellipse cx="16" cy="16" rx="14" ry="5.5" transform="rotate(-35 16 16)" stroke="currentColor" stroke-width="1.5"/><circle cx="23.5" cy="9.75" r="2.25" fill="currentColor"/></svg>
+          </span>
+          <span class="brand-name">orbit<span>.</span></span>
+        </a>
+
+        <button class="new-chat-button" id="new-chat" type="button">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span>New chat</span>
+          <span class="shortcut">⌘ K</span>
+        </button>
+
+        <div class="sidebar-section">
+          <p class="section-label">YOUR SPACE</p>
+          <button class="nav-item active" type="button" aria-current="page">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.25 5.25h11.5M4.25 10h8M4.25 14.75h11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Chat</span>
+          </button>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="model-card">
+            <span class="model-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M10 2.5 11.8 8l5.7 2-5.7 1.9-1.8 5.6-1.9-5.6-5.6-1.9 5.6-2L10 2.5Z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="model-copy"><strong>Powered by Groq</strong><span>Fast, thoughtful answers</span></span>
+            <span class="status-dot" title="Ready"></span>
+          </div>
+          <div class="profile">
+            <span class="avatar">Y</span>
+            <span class="profile-name">Your workspace</span>
+            <svg class="profile-more" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="4" cy="10" r="1" fill="currentColor"/><circle cx="10" cy="10" r="1" fill="currentColor"/><circle cx="16" cy="10" r="1" fill="currentColor"/></svg>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <button class="mobile-brand" id="mobile-new-chat" type="button" aria-label="Start a new chat">
+            <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11.25" stroke="currentColor" stroke-width="1.5"/><ellipse cx="16" cy="16" rx="14" ry="5.5" transform="rotate(-35 16 16)" stroke="currentColor" stroke-width="1.5"/><circle cx="23.5" cy="9.75" r="2.25" fill="currentColor"/></svg></span>
+            <span class="brand-name">orbit<span>.</span></span>
+          </button>
+          <div class="chat-title"><span>New conversation</span><span class="title-chevron">⌄</span></div>
+          <div class="topbar-actions"><span class="online-label"><i></i> Online</span><button class="icon-button" id="clear-chat" type="button" aria-label="Clear conversation" title="Clear conversation"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 6h12M8 6V4.5h4V6m2.5 0-.65 9.2a1 1 0 0 1-1 .93h-5.7a1 1 0 0 1-1-.93L6.5 6m2.25 3v4m2.5-4v4" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+        </header>
+
+        <section class="conversation" id="conversation" aria-live="polite">
+          <div class="welcome" id="welcome">
+            <div class="welcome-orbit" aria-hidden="true">
+              <span class="orbit-ring ring-one"></span><span class="orbit-ring ring-two"></span>
+              <span class="orbit-core"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11.25" stroke="currentColor" stroke-width="1.4"/><ellipse cx="16" cy="16" rx="14" ry="5.5" transform="rotate(-35 16 16)" stroke="currentColor" stroke-width="1.4"/><circle cx="23.5" cy="9.75" r="2.25" fill="currentColor"/></svg></span>
+              <span class="sparkle sparkle-a">✳</span><span class="sparkle sparkle-b">✦</span><span class="sparkle sparkle-c">·</span>
+            </div>
+            <p class="eyebrow">A LITTLE SPACE TO THINK</p>
+            <h1>Good things start<br>with a <span>question.</span></h1>
+            <p class="welcome-copy">Ideas, answers, and rabbit holes.<br>Where should we begin?</p>
+            <div class="suggestions" aria-label="Suggested prompts">
+              <button class="suggestion" type="button"><span class="suggestion-icon mint">✳</span><span><strong>Make something</strong><small>Help me brainstorm a side project</small></span><span class="suggestion-arrow">↗</span></button>
+              <button class="suggestion" type="button"><span class="suggestion-icon lilac">⌘</span><span><strong>Learn something</strong><small>Explain a tricky idea, simply</small></span><span class="suggestion-arrow">↗</span></button>
+              <button class="suggestion" type="button"><span class="suggestion-icon peach">✎</span><span><strong>Write something</strong><small>Help me find the right words</small></span><span class="suggestion-arrow">↗</span></button>
+            </div>
+          </div>
+          <div class="messages" id="messages"></div>
+        </section>
+
+        <div class="composer-wrap">
+          <form class="composer" id="chat-form">
+            <label class="sr-only" for="message-input">Message Orbit</label>
+            <textarea id="message-input" rows="1" maxlength="6000" placeholder="Ask anything..." autocomplete="off"></textarea>
+            <div class="composer-footer">
+              <span class="composer-hint"><span class="sparkle-hint">✳</span> A curious mind goes a long way</span>
+              <div class="composer-tools">
+                <span class="key-hint"><kbd>↵</kbd> to send</span>
+                <button class="send-button" id="send-button" type="submit" aria-label="Send message" disabled>
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 15.5v-11m0 0L5.5 9m4.5-4.5L14.5 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+            </div>
+          </form>
+          <p class="disclaimer">Orbit can make mistakes. Trust your judgment, especially with important things.</p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

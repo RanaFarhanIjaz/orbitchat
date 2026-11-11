@@ -1,0 +1,12 @@
+{
+  "name": "groq-chatbot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A lightweight AI chatbot powered by Groq",
+  "engines": {
+    "node": ">=20.6"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js"
+  }
+}
